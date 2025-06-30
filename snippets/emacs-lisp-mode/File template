@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: File template
+# key: ftmp
+# --
+
+;;; `(file-name-nondirectory buffer-file-name)` --- ${1:purpose}  -*- lexical-binding: t -*-
+
+(provide '`(file-name-base buffer-file-name)`)
+;;; `(file-name-nondirectory buffer-file-name)` ends here
