@@ -37,6 +37,13 @@
           (write-file (concat llm-log-location filename) nil))
       (message "Failed to create gptel buffer"))))
 
+(defun yubai/gptel-mode ()
+  "Enable `gptel-mode' automatically when file is stored in chat directory."
+  (when-let* ((buffer-file-name)
+              (chat-dir llm-log-location)
+              ((file-in-directory-p buffer-file-name chat-dir)))
+    (gptel-mode 1)))
+
 (use-package gptel
   :ensure t
   :init
@@ -46,6 +53,8 @@
   (setq gptel-prompt-prefix-alist '((markdown-mode . "### Prompt:") (org-mode . "*** Prompt: \n") (text-mode . "###  Prompt: \n")))
   (setq gptel-response-prefix-alist '((markdown-mode . #1="") (org-mode . "*** Response: \n") (text-mode . #1#)))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+  :hook
+  (org-mode . yubai/gptel-mode)
   :general
   (yubai/leader-def
     :states 'normal
