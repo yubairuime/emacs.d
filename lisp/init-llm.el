@@ -7,20 +7,23 @@
   (setq gptel-model 'gpt-4.1
         gptel-backend (gptel-make-gh-copilot "Copilot")))
 
+(defun yubai/read-directive-from-file (name directive-file)
+  (with-temp-buffer
+    (insert-file-contents directive-file)
+    (setq directive-content (buffer-string))
+    (add-to-list 'gptel-directives `(,name ,directive-content))))
+
 (defun yubai/llm-directives-setup ()
-  (let ((default-directive
-         "You are a large language model living in Emacs and a helpful assistant. Respond thoroughly")
-        (programming-directive
-         "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note.")
-        (writing-directive
-         "You are a large language model and a writing assistant. Respond concisely.")
-        (socrates-directive
-         "You are a tutor that always responds in the Socratic style. You never give the student the answer, but always try to ask just the right question to help them learn to think for themselves. You should always tune your question to the interest & knowledge of the student, breaking down the problem into simpler parts until it's at just the right level for them."))
-    (setq gptel-directives
-          `((default . ,default-directive)
-            (programming . ,programming-directive)
-            (writing . ,writing-directive)
-            (socrates . ,socrates-directive)))))
+  (setq gptel-directives '())
+  (let ((directives
+         '((:name default :file "~/.emacs.d/misc/gptel-directives/default.txt")
+           (:name programming :file "~/.emacs.d/misc/gptel-directives/programming.txt")
+           (:name writing :file "~/.emacs.d/misc/gptel-directives/writing.txt")
+           (:name socrates :file "~/.emacs.d/misc/gptel-directives/socrates.txt"))))
+    (dolist (directive directives)
+      (yubai/read-directive-from-file
+       (plist-get directive :name)
+       (plist-get directive :file)))))
 
 (defun yubai/gptel-new-buffer ()
   "Create a new gptel buffer with the model and a random name, including an ISO timestamp."
@@ -43,7 +46,6 @@
   (setq gptel-prompt-prefix-alist '((markdown-mode . "### Prompt:") (org-mode . "*** Prompt: \n") (text-mode . "###  Prompt: \n")))
   (setq gptel-response-prefix-alist '((markdown-mode . #1="") (org-mode . "*** Response: \n") (text-mode . #1#)))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
-  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
   :general
   (yubai/leader-def
     :states 'normal
