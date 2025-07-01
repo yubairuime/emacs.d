@@ -38,12 +38,12 @@
   (require 'init-windows)
   (require 'init-project)
   (require 'init-autosave)
+  (require 'init-company)
   (run-with-idle-timer
    1 nil
    #'(lambda ()
        (require 'init-misc)
        (require 'init-llm)
-       (require 'init-company)
        (require 'init-lsp)
        (require 'init-term)
        (require 'init-eldoc)

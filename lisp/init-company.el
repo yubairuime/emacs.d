@@ -24,11 +24,11 @@
   :ensure t
   :init
   (yubai/ispell-setup)
-  (global-company-mode 1)
   :hook
   (org-mode . yubai/company-ispell-setup)
   (markdown-mode . yubai/company-ispell-setup)
   (text-mode . yubai/company-ispell-setup)
+  (after-init . global-company-mode)
   :custom
   (company-show-numbers t)
   (company-idle-delay 0)
