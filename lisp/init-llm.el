@@ -55,5 +55,11 @@
     :states 'normal
     "gp" 'yubai/gptel-new-buffer))
 
+(use-package gptel-commit
+  :ensure t
+  :after (gptel magit)
+  :custom
+  (gptel-commit-stream t))
+
 (provide 'init-llm)
 ;;; init-llm.el ends here
