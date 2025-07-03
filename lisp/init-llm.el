@@ -13,17 +13,12 @@
     (setq directive-content (buffer-string))
     (add-to-list 'gptel-directives `(,name ,directive-content))))
 
-(defun yubai/llm-directives-setup ()
+(defun yubai/read-directives-from-directory (directives-directory)
   (setq gptel-directives '())
-  (let ((directives
-         '((:name default :file "~/.emacs.d/misc/gptel-directives/default.txt")
-           (:name programming :file "~/.emacs.d/misc/gptel-directives/programming.txt")
-           (:name writing :file "~/.emacs.d/misc/gptel-directives/writing.txt")
-           (:name socrates :file "~/.emacs.d/misc/gptel-directives/socrates.txt"))))
-    (dolist (directive directives)
-      (yubai/read-directive-from-file
-       (plist-get directive :name)
-       (plist-get directive :file)))))
+  (dolist (directive-file (directory-files-recursively directives-directory "\\.txt$"))
+    (yubai/read-directive-from-file
+     (intern (file-name-base directive-file))
+     directive-file)))
 
 (defun yubai/gptel-new-buffer ()
   "Create a new gptel buffer with the model and a random name, including an ISO timestamp."
@@ -47,7 +42,7 @@
 (use-package gptel
   :ensure t
   :init
-  (yubai/llm-directives-setup)
+  (yubai/read-directives-from-directory "~/.emacs.d/misc/gptel-directives/")
   (yubai/copilot-setup)
   (setq gptel-default-mode 'org-mode)
   (setq gptel-prompt-prefix-alist '((markdown-mode . "### Prompt:") (org-mode . "*** Prompt: \n") (text-mode . "###  Prompt: \n")))
