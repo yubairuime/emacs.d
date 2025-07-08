@@ -39,6 +39,7 @@
   (require 'init-project)
   (require 'init-autosave)
   (require 'init-company)
+  (require 'init-modeline)
   (run-with-idle-timer
    1 nil
    #'(lambda ()
