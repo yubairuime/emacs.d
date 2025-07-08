@@ -6,7 +6,7 @@
   :hook
   (prog-mode . display-line-numbers-mode))
 
-(load-theme 'modus-operandi-tinted)
+(load-theme 'modus-operandi)
 (setq initial-scratch-message "")
 
 (provide 'init-theme)
