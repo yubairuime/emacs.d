@@ -13,7 +13,8 @@
 (use-package auto-save
   :vc (:url "https://github.com/manateelazycat/auto-save")
   :hook
-  (find-file . yubai/auto-save-setup))
+  (find-file . yubai/auto-save-setup)
+  (org-mode . yubai/auto-save-setup))
 
 (provide 'init-autosave)
 ;;; init-autosave.el ends here
