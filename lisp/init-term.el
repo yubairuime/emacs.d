@@ -2,11 +2,14 @@
 
 (use-package eat
   :ensure t
+  :config
+  (evil-set-initial-state 'eat-mode 'insert)
   :general
   (general-define-key
    :keymaps 'eat-mode-map
    :states 'normal
-   "q" 'quit-window)
+   "q" 'quit-window
+   "p" 'eat-yank)
   (yubai/leader-def
     :states 'normal
     "tt" 'eat-other-window))
