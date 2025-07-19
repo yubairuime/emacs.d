@@ -52,6 +52,7 @@
        (require 'init-clipboard)
        (require 'init-dired)
        (require 'init-org)
+       (require 'init-markdown)
        (require 'init-magit)
        (require 'init-python)
        (require 'init-racket)
