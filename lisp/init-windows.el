@@ -2,6 +2,8 @@
 
 (use-package winum
   :ensure t
+  :config
+  (setq winum-auto-setup-mode-line nil)
   :hook
   (after-init . winum-mode)
   :general
