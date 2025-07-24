@@ -3,6 +3,8 @@
 
 (setq inhibit-startup-message t)
 
+(setq native-comp-async-report-warnings-errors nil)
+
 (setenv "LSP_USE_PLISTS" "true")
 
 ;; In noninteractive sessions, prioritize non-byte-compiled source files to
