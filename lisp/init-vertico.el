@@ -43,11 +43,6 @@
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
-(use-package embark
-  :ensure t
-  :bind (:map minibuffer-mode-map
-              ("M-o" . embark-export)))
-
 (defun yubai/use-orderless-in-minibuffer ()
   (setq-local completion-styles '(substring orderless)))
 
