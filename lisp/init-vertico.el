@@ -28,11 +28,9 @@
   (yubai/leader-def
     :states 'normal
     "ff" 'find-file
-    "rg" 'consult-ripgrep
     "sb" 'consult-buffer
     "rr" 'consult-recent-file
-    "ya" 'consult-yasnippet
-    "ss" 'consult-line))
+    "ya" 'consult-yasnippet))
 
 ;; Configure directory extension.
 (use-package vertico-directory

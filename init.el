@@ -50,6 +50,7 @@
        (require 'init-eldoc)
        (require 'init-snippet)
        (require 'init-clipboard)
+       (require 'init-ripgrep)
        (require 'init-dired)
        (require 'init-org)
        (require 'init-markdown)
