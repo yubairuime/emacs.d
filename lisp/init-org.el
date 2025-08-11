@@ -55,5 +55,20 @@
   :hook
   (org-mode . org-indent-mode))
 
+(use-package org-roam
+  :ensure t
+  :config
+  (org-roam-db-autosync-mode)
+  :general
+  (yubai/leader-def
+    :states 'normal
+    "ori" 'org-roam-node-insert
+    "orf" 'org-roam-node-find
+    "orl" 'org-roam-buffer-toggle
+    "org" 'org-roam-ui-open))
+
+(use-package org-roam-ui
+  :ensure t)
+
 (provide 'init-org)
 ;;; init-org.el ends here
