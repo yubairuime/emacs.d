@@ -2,7 +2,7 @@
 
 (use-package electric-pair
   :hook
-  (prog-mode . electric-pair-mode))
+  (prog-mode . electric-pair-local-mode))
 
 ;; Automatically reload files was modified by external program
 (use-package autorevert
