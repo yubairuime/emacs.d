@@ -20,5 +20,37 @@
         large-hscroll-threshold 1000
         syntax-wholeline-max 1000))
 
+(defun intellij-backspace (arg)
+  (interactive "*P")
+  (cond
+   ((region-active-p)
+    (backward-delete-char-untabify (prefix-numeric-value arg)))
+   ((looking-back "^[[:space:]]*" (line-beginning-position))
+    (let* ((beg (point))
+           (end (progn (indent-for-tab-command) (point))))
+      (when (<= beg end)
+        (if (save-excursion (forward-line -1) (line-blank-p))
+            (progn (delete-region (line-beginning-position 0) (line-beginning-position)) (back-to-indentation))
+          (delete-indentation)))))
+   ((or
+     (and (char-equal (char-before) ?\()
+          (char-equal (char-after) ?\)))
+     (and (char-equal (char-before) ?\[)
+          (char-equal (char-after) ?\]))
+     (and (char-equal (char-before) ?\{)
+          (char-equal (char-after) ?\}))
+     )
+    (backward-delete-char 1)
+    (delete-char 1))
+   (t
+    (backward-delete-char-untabify (prefix-numeric-value arg)))))
+
+(defun line-blank-p ()
+  (save-excursion
+    (beginning-of-line)
+    (looking-at "[[:space:]]*$")))
+
+(define-key prog-mode-map (kbd "<backspace>") #'intellij-backspace)
+
 (provide 'init-edit)
 ;;; init-edit.el ends here
