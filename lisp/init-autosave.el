@@ -11,7 +11,7 @@
   (auto-save-enable))
 
 (use-package auto-save
-  :vc (:url "https://github.com/manateelazycat/auto-save")
+  :load-path "site-lisp/"
   :hook
   (find-file . yubai/auto-save-setup)
   (org-mode . yubai/auto-save-setup))
