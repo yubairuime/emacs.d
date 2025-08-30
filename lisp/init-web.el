@@ -32,5 +32,10 @@
   :init
   (add-hook 'web-mode-hook 'auto-rename-tag-mode))
 
+(use-package emmet-mode
+  :ensure t
+  :hook
+  ((web-mode) . emmet-mode))
+
 (provide 'init-web)
 ;;; init-web.el ends here
