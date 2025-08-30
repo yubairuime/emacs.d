@@ -42,5 +42,11 @@
   :init
   (evil-collection-init))
 
+(use-package evil-matchit
+  :ensure t
+  :after evil
+  :hook
+  (evil-mode . global-evil-matchit-mode))
+
 (provide 'init-evil)
 ;;; init-evil.el ends here
