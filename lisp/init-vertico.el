@@ -23,6 +23,7 @@
 (use-package consult
   :ensure t
   :custom
+  (consult-preview-key nil)
   (consult-async-min-input 1)
   :general
   (yubai/leader-def
