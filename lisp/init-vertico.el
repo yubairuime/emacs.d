@@ -31,6 +31,7 @@
     "ff" 'find-file
     "sb" 'consult-buffer
     "rr" 'recentf-open
+    "im" 'consult-imenu
     "ya" 'consult-yasnippet))
 
 ;; Configure directory extension.
