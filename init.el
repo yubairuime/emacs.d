@@ -58,7 +58,6 @@
        (require 'init-python)
        (require 'init-rust)
        (require 'init-racket)
-       (require 'init-cl)
        (require 'init-web)
        (require 'init-c)))
 
