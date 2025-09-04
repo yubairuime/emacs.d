@@ -1,6 +1,7 @@
 ;;; init-c.el --- Configuration for C/C++  -*- lexical-binding: t -*-
 
 (defun yubai/c-mode-setup ()
+  (c-set-style "bsd")
   (setq c-basic-offset 4)
   (lsp-deferred))
 
