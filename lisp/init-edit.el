@@ -9,6 +9,10 @@
   :hook
   (find-file . global-auto-revert-mode))
 
+(use-package hl-line-mode
+  :hook
+  (prog-mode . hl-line-mode))
+
 (use-package emacs
   :config
   (setq backward-delete-char-untabify-method 'hungry)
