@@ -1,5 +1,10 @@
 ;;; init-term.el --- Configuration for terminal  -*- lexical-binding: t -*-
 
+(defun eat-quit ()
+  (interactive)
+  (eat-kill-process)
+  (quit-window))
+
 (use-package eat
   :ensure t
   :config
@@ -8,7 +13,7 @@
   (general-define-key
    :keymaps 'eat-mode-map
    :states 'normal
-   "q" 'quit-window
+   "q" 'eat-quit
    "p" 'eat-yank)
   (yubai/leader-def
     :states 'normal
