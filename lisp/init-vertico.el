@@ -9,11 +9,11 @@
 
 (use-package recentf
   :commands
-  (consult-recent-file)
+  (recentf-open)
   :init
   (recentf-mode)
   :custom
-  (recentf-max-saved-items 200))
+  (recentf-max-saved-items 500))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
