@@ -23,8 +23,8 @@
   :general
   (yubai/leader-def
     :states 'normal
-    "fr" 'xref-find-references
-    "fd" 'xref-find-definitions
+    "fr" 'lsp-find-references
+    "fd" 'lsp-find-definition
     "gb" 'xref-go-back))
 
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
