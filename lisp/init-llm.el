@@ -48,18 +48,30 @@
   (setq gptel-prompt-prefix-alist '((markdown-mode . "### Prompt:") (org-mode . "*** Prompt: \n") (text-mode . "###  Prompt: \n")))
   (setq gptel-response-prefix-alist '((markdown-mode . #1="") (org-mode . "*** Response: \n") (text-mode . #1#)))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+  (yubai/leader-def
+    :states 'normal
+    "gsp" 'gptel-system-prompt
+    "gsm" 'gptel-menu)
   :hook
   (org-mode . yubai/gptel-mode)
   :general
   (yubai/leader-def
     :states 'normal
-    "gp" 'yubai/gptel-new-buffer))
+    "gp" 'yubai/gptel-new-buffer
+    "gf" 'yubai/search-and-open-llm-logs))
 
 (use-package gptel-commit
   :ensure t
   :after (gptel magit)
   :custom
   (gptel-commit-stream t))
+
+(defun yubai/search-and-open-llm-logs ()
+  (interactive)
+  (let* ((llm-log-files (directory-files-recursively llm-log-location "\\.org$"))
+         (selected-llm-log (completing-read "LLM Log FIles: " llm-log-files)))
+    (find-file selected-llm-log)
+    (yubai/gptel-mode)))
 
 (provide 'init-llm)
 ;;; init-llm.el ends here
