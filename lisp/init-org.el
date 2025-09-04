@@ -44,7 +44,7 @@
   (org-mode . writeroom-mode)
   (markdown-mode . writeroom-mode)
   :custom
-  (writeroom-width 120))
+  (writeroom-width 140))
 
 (use-package org-download
   :ensure t
