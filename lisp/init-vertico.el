@@ -29,7 +29,7 @@
     :states 'normal
     "ff" 'find-file
     "sb" 'consult-buffer
-    "rr" 'consult-recent-file
+    "rr" 'recentf-open
     "ya" 'consult-yasnippet))
 
 ;; Configure directory extension.
