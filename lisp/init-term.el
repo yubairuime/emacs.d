@@ -15,6 +15,10 @@
    :states 'normal
    "q" 'eat-quit
    "p" 'eat-yank)
+  (general-define-key
+   :keymaps 'eat-mode-map
+   :states 'insert
+   "C-c" 'eat-self-input)
   (yubai/leader-def
     :states 'normal
     "tt" 'eat-other-window))
