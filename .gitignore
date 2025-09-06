@@ -19,3 +19,4 @@ url/
 /history
 /.cache/
 .lsp*
+ielm-history.eld
