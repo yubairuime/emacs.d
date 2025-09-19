@@ -5,8 +5,5 @@
   :config
   (setq markdown-fontify-code-blocks-natively t))
 
-(use-package grip-mode
-  :ensure t)
-
 (provide 'init-markdown)
 ;;; init-markdown.el ends here
