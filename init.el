@@ -53,7 +53,6 @@
        (require 'init-snippet)
        (require 'init-clipboard)
        (require 'init-ripgrep)
-       (require 'init-dired)
        (require 'init-markdown)
        (require 'init-python)
        (require 'init-rust)
