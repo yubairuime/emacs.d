@@ -39,12 +39,5 @@
   :hook
   (company-mode . company-prescient-mode))
 
-(use-package company-posframe
-  :ensure t
-  :hook
-  (company-mode . company-posframe-mode)
-  :custom
-  (company-posframe-quickhelp-delay 1.0))
-
 (provide 'init-company)
 ;;; init-company.el ends here
