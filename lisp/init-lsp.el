@@ -2,6 +2,12 @@
 
 (use-package lsp-mode
   :ensure t
+  :hook
+  ((prog-mode . (lambda ()
+                  (unless (derived-mode-p
+                           'emacs-lisp-mode 'lisp-mode
+                           'snippet-mode)
+                    (lsp-deferred)))))
   :config
   (fset #'jsonrpc--log-event #'ignore)
   (setq lsp-lens-enable nil)

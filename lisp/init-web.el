@@ -13,8 +13,6 @@
   :mode "\\.erb\\'"
   :mode "\\.mustache\\'"
   :mode "\\.djhtml\\'"
-  :hook
-  ((web-mode) . lsp-deferred)
   :config
   (setq web-mode-engines-alist
         '(("svelte" . "\\.svelte\\'")))

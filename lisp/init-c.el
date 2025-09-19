@@ -2,8 +2,7 @@
 
 (defun yubai/c-mode-setup ()
   (c-set-style "bsd")
-  (setq c-basic-offset 4)
-  (lsp-deferred))
+  (setq c-basic-offset 4))
 
 (add-hook 'c++-mode-hook 'yubai/c-mode-setup)
 (add-hook 'c-mode-hook 'yubai/c-mode-setup)

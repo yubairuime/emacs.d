@@ -1,9 +1,7 @@
 ;;; init-python.el --- Configuration for Python  -*- lexical-binding: t -*-
 
 (defun yubai/python-setup ()
-  (setq python-indent-offset 4)
-  (require 'lsp-pyright)
-  (lsp-deferred))
+  (setq python-indent-offset 4))
 
 (use-package lsp-pyright
   :ensure t
