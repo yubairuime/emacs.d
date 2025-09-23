@@ -43,11 +43,11 @@
   (require 'init-term)
   (require 'init-org)
   (require 'init-magit)
-  (require 'init-llm)
-  (require 'init-lsp)
   (run-with-idle-timer
    1 nil
    #'(lambda ()
+       (require 'init-llm)
+       (require 'init-lsp)
        (require 'init-misc)
        (require 'init-eldoc)
        (require 'init-snippet)
