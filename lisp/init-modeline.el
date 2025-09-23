@@ -10,7 +10,7 @@
 
 (defun yubai-modeline-evil-state ()
   "Display the current Evil state."
-  (let* ((normal-state-color "#50a14f")
+  (let* ((normal-state-color "#000000")
          (insert-state-color "#4078f2")
          (visual-state-color "#a626a4")
          (state-color
