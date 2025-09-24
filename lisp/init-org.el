@@ -10,8 +10,6 @@
   (setq org-return-follows-link t)
   (setq truncate-lines nil)
   (setq org-startup-with-inline-images t)
-  ;; Org Capture Configuration
-  (setq org-capture-templates nil)
   :general
   (general-define-key
    :keymaps 'org-mode-map
@@ -28,11 +26,6 @@
     "ok" 'org-priority-down
     "gt" 'org-open-at-point))
 
-(use-package org-journal
-  :ensure t
-  :init
-  (setq org-journal-file-type 'weekly))
-
 (use-package virtual-auto-fill
   :ensure t
   :hook
@@ -46,29 +39,9 @@
   :custom
   (writeroom-width 140))
 
-(use-package org-download
-  :ensure t
-  :hook
-  (org-mode . org-download-enable))
-
 (use-package org-indent
   :hook
   (org-mode . org-indent-mode))
-
-(use-package org-roam
-  :ensure t
-  :config
-  (org-roam-db-autosync-mode)
-  :general
-  (yubai/leader-def
-    :states 'normal
-    "ori" 'org-roam-node-insert
-    "orf" 'org-roam-node-find
-    "orl" 'org-roam-buffer-toggle
-    "org" 'org-roam-ui-open))
-
-(use-package org-roam-ui
-  :ensure t)
 
 (provide 'init-org)
 ;;; init-org.el ends here
