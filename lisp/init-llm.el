@@ -4,7 +4,7 @@
 
 (defun yubai/copilot-setup ()
   (gptel-make-gh-copilot "Copilot")
-  (setq gptel-model 'gpt-4.1
+  (setq gptel-model 'claude-sonnet-4
         gptel-backend (gptel-make-gh-copilot "Copilot")))
 
 (defun yubai/read-directive-from-file (name directive-file)
