@@ -5,9 +5,6 @@
 ;; Automatically kill processes
 (setq confirm-kill-processes nil)
 
-(use-package emacs-everywhere
-  :ensure t)
-
 (use-package disable-mouse
   :ensure t
   :after evil

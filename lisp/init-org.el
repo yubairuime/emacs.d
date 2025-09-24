@@ -18,12 +18,7 @@
    "S-<iso-lefttab>" 'org-metaleft)
   (yubai/leader-def
     :states 'normal
-    "oa" 'org-agenda
     "ot" 'org-todo
-    "oc" 'org-capture
-    "oj" 'org-metaup
-    "od" 'org-journal-new-entry
-    "ok" 'org-priority-down
     "gt" 'org-open-at-point))
 
 (use-package virtual-auto-fill
