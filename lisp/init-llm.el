@@ -15,7 +15,7 @@
 
 (defun yubai/read-directives-from-directory (directives-directory)
   (setq gptel-directives '())
-  (dolist (directive-file (directory-files-recursively directives-directory "\\.txt$"))
+  (dolist (directive-file (directory-files-recursively directives-directory "\\.md$"))
     (yubai/read-directive-from-file
      (intern (file-name-base directive-file))
      directive-file)))
@@ -45,9 +45,10 @@
   (yubai/read-directives-from-directory "~/.emacs.d/misc/gptel-directives/")
   (yubai/copilot-setup)
   (setq gptel-default-mode 'org-mode)
-  (setq gptel-prompt-prefix-alist '((markdown-mode . "### Prompt:") (org-mode . "*** Prompt: \n") (text-mode . "###  Prompt: \n")))
-  (setq gptel-response-prefix-alist '((markdown-mode . #1="") (org-mode . "*** Response: \n") (text-mode . #1#)))
+  (setq gptel-prompt-prefix-alist '((org-mode . "* Prompt: \n")))
+  (setq gptel-response-prefix-alist '((org-mode . "* Response: \n")))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
   (yubai/leader-def
     :states 'normal
     "gsp" 'gptel-system-prompt
