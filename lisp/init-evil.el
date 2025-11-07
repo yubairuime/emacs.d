@@ -14,9 +14,10 @@
   :ensure t
   :hook
   (evil-mode . evil-escape-mode)
+  :custom
+  (evil-escape-key-sequence "kj")
+  (evil-escape-delay 0.2)
   :config
-  (setq-default evil-escape-key-sequence "kj")
-  (setq-default evil-escape-delay 0.2)
   (add-to-list 'evil-escape-excluded-major-modes 'magit-status-mode))
 
 (use-package evil-nerd-commenter

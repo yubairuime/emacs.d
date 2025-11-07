@@ -1,8 +1,5 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 
-;; Optimize Garbage Collection for Startup
-(setq gc-cons-threshold 200000000)
-
 ;; Process performance tuning
 (setq read-process-output-max (* 4 1024 1024))
 (setq process-adaptive-read-buffering nil)

@@ -19,6 +19,7 @@
   (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-enable-indentation nil)
   (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-use-plists t)
   :general
   (yubai/leader-def
     :states 'normal

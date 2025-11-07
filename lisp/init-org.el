@@ -10,6 +10,8 @@
   (setq org-return-follows-link t)
   (setq truncate-lines nil)
   (setq org-startup-with-inline-images t)
+  (setq org-src-preserve-indentation nil
+      org-edit-src-content-indentation 0)
   :general
   (general-define-key
    :keymaps 'org-mode-map
