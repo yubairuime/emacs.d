@@ -1,14 +1,6 @@
 ;;; init-lsp.el --- Configuration for lsp-mode  -*- lexical-binding: t -*-
 
-(use-package lsp-mode
-  :ensure t
-  :hook
-  ((prog-mode . (lambda ()
-                  (unless (derived-mode-p
-                           'emacs-lisp-mode 'lisp-mode
-                           'snippet-mode)
-                    (lsp-deferred)))))
-  :config
+(defun yubai/lsp-setup ()
   (fset #'jsonrpc--log-event #'ignore)
   (setq lsp-lens-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
@@ -20,6 +12,15 @@
   (setq lsp-enable-indentation nil)
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-use-plists t)
+  (unless (derived-mode-p
+           'emacs-lisp-mode 'lisp-mode
+           'snippet-mode)
+    (lsp-deferred)))
+
+(use-package lsp-mode
+  :ensure t
+  :hook
+  ((prog-mode . yubai/lsp-setup))
   :general
   (yubai/leader-def
     :states 'normal
