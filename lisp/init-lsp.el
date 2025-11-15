@@ -1,17 +1,30 @@
 ;;; init-lsp.el --- Configuration for lsp-mode  -*- lexical-binding: t -*-
 
+(defun yubai/lsp-ui-setup ()
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-sideline-show-hover nil
+        lsp-ui-doc-position 'at-point
+        lsp-ui-doc-show-with-cursor nil
+        lsp-ui-doc-show-with-mouse nil)
+  (define-key evil-normal-state-map (kbd "K") 'yubai/show-doc-and-cleanup))
+
+(defun yubai/show-doc-and-cleanup ()
+  (interactive)
+  (lsp-ui-doc-show)
+  (add-hook 'post-command-hook 'lsp-ui-doc-hide nil t))
+
 (defun yubai/lsp-setup ()
   (fset #'jsonrpc--log-event #'ignore)
   (setq lsp-lens-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-ui-sideline-enable nil)
-  (setq lsp-ui-sideline-show-hover nil)
   (setq lsp-signature-auto-activate nil)
   (setq lsp-signature-render-documentation nil)
   (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-enable-indentation nil)
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-use-plists t)
+  (yubai/lsp-ui-setup)
+
   (unless (derived-mode-p
            'emacs-lisp-mode 'lisp-mode
            'snippet-mode)
@@ -24,16 +37,9 @@
   :general
   (yubai/leader-def
     :states 'normal
-    "rn" 'lsp-rename))
-
-(use-package xref
-  :after lsp-mode
-  :general
-  (yubai/leader-def
-    :states 'normal
+    "rn" 'lsp-rename
     "fr" 'lsp-find-references
-    "fd" 'lsp-find-definition
-    "gb" 'xref-go-back))
+    "fd" 'lsp-find-definition))
 
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
