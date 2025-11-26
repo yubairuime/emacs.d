@@ -30,7 +30,9 @@
   :ensure t
   :config
   (general-create-definer yubai/leader-def
-	:prefix "SPC"))
+	:prefix "SPC")
+  (general-create-definer yubai/leader-comma-def
+    :prefix ","))
 
 (use-package which-key
   :ensure t

@@ -28,5 +28,37 @@
     "wh" 'split-window-horizontally
     "wv" 'split-window-vertically))
 
+(defun yubai/switch-tab-by-number (n)
+  (interactive)
+  (tab-bar-switch-to-tab n))
+
+(defvar my-tab-limit 8 "Maximum number of tabs allowed")
+
+(defun yubai/new-tab ()
+  "Create new tab only if under the limit."
+  (interactive)
+  (if (< (length (tab-bar-tabs)) my-tab-limit)
+      (tab-bar-new-tab)
+    (message "Tab limit reached! Maximum %d tabs allowed." my-tab-limit)))
+
+(use-package tab-bar-mode
+  :hook
+  (after-init . tab-bar-mode)
+  :general
+  (yubai/leader-comma-def
+    :states 'normal
+    "t" 'yubai/new-tab
+    "x" 'tab-bar-close-tab
+    "1" '(lambda () (interactive) (tab-bar-select-tab 1))
+    "2" '(lambda () (interactive) (tab-bar-select-tab 2))
+    "3" '(lambda () (interactive) (tab-bar-select-tab 3))
+    "4" '(lambda () (interactive) (tab-bar-select-tab 4))
+    "5" '(lambda () (interactive) (tab-bar-select-tab 5))
+    "6" '(lambda () (interactive) (tab-bar-select-tab 6))
+    "7" '(lambda () (interactive) (tab-bar-select-tab 7))
+    "8" '(lambda () (interactive) (tab-bar-select-tab 8))
+    "9" '(lambda () (interactive) (tab-bar-select-tab -1)) ; Last tab, browser-style!
+    "0" '(lambda () (interactive) (tab-bar-select-tab 1)))) ; Circle back to first
+
 (provide 'init-windows)
 ;;; init-windows.el ends here
