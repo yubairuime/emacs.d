@@ -8,6 +8,7 @@
   (general-define-key
    :keymaps 'eat-mode-map
    :states 'normal
+   "q" 'open-eat-in-childframe
    "p" 'eat-yank)
   (general-define-key
    :keymaps 'eat-mode-map
