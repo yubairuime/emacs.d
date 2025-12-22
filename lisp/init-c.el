@@ -1,12 +1,5 @@
 ;;; init-c.el --- Configuration for C/C++  -*- lexical-binding: t -*-
 
-(defun yubai/c-mode-setup ()
-  (c-set-style "bsd")
-  (setq c-basic-offset 4))
-
-(add-hook 'c++-mode-hook 'yubai/c-mode-setup)
-(add-hook 'c-mode-hook 'yubai/c-mode-setup)
-
 (defun yubai/create-textdata-and-run ()
   (interactive)
   (write-file "./testdata.txt")

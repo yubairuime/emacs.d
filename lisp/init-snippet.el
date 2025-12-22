@@ -4,8 +4,7 @@
   :ensure t
   :init
   (setq yas-verbosity 0)
-  :hook
-  (after-init . yas-global-mode)
+  (yas-global-mode)
   :bind
   ("M-y" . yas-expand))
 

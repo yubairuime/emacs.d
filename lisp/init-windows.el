@@ -1,5 +1,8 @@
 ;;; init-windows.el --- Configuration for window managerment  -*- lexical-binding: t -*-
 
+(use-package posframe
+  :ensure t)
+
 (use-package winum
   :ensure t
   :config

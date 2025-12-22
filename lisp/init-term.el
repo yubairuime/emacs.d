@@ -18,15 +18,19 @@
     :states 'normal
     "tt" 'open-eat-in-childframe))
 
+(use-package async
+  :ensure t)
+
 (use-package eee
-  ;; :vc (:url "https://github.com/eval-exec/eee.el")
-  :load-path "~/.emacs.d/elpa/eee/"
+  :vc (:url "https://github.com/eval-exec/eee.el")
+  ;; :load-path "~/.emacs.d/elpa/eee/"
   :general
   (yubai/leader-def
     :states 'normal
     "." 'ee-yazi
     "gg" 'ee-rg)
-  :config
+  :init
+  (require 'eee)
   (setq ee-terminal-command "kitty"))
 
 (defun create-eat-posframe (buffer)
@@ -60,11 +64,10 @@
         (make-frame-invisible shell-pop--frame)
         (select-frame-set-input-focus (frame-parent shell-pop--frame))
         (set-process-query-on-exit-flag (get-buffer-process "*eat*") nil)
-        (kill-buffer "*eat*")
+        (posframe-delete "*eat*")
         (setq shell-pop--frame nil))
     (let ((previous-buffer (current-buffer))
           (buffer (eat)))
-      
       (switch-to-buffer previous-buffer)
       (setq shell-pop--frame (create-eat-posframe buffer))
       (select-frame-set-input-focus shell-pop--frame))))

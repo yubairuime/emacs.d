@@ -1,5 +1,7 @@
 ;;; init-org.el --- Configuration for Org Mode  -*- lexical-binding: t -*-
 
+(defvar note-folder "")
+
 (use-package org
   :ensure nil
   :init
@@ -21,7 +23,8 @@
   (yubai/leader-def
     :states 'normal
     "ot" 'org-todo
-    "gt" 'org-open-at-point))
+    "gt" 'org-open-at-point
+    "dn" 'yubai/create-daily-note))
 
 (use-package virtual-auto-fill
   :ensure t
@@ -39,6 +42,30 @@
 (use-package org-indent
   :hook
   (org-mode . org-indent-mode))
+
+(defun yubai/create-daily-note ()
+  (interactive)
+  (let* ((timestamp (format-time-string "%Y%m%d"))
+         (filename (concat timestamp ".org"))
+         (filepath (concat note-folder filename)))
+    (if (file-exists-p filepath)
+        (find-file filepath)
+      (let ((buffer (get-buffer-create filename)))
+        (switch-to-buffer buffer)
+        (write-file filepath nil)
+        ))))
+
+(defun yubai/create-new-note ()
+  (interactive)
+  (let* ((name (read-string "Enter new note name: "))
+         (filename (concat name ".org"))
+         (filepath (concat note-folder filename)))
+    (if (file-exists-p filepath)
+        (message "The file already exists!")
+      (let ((buffer (get-buffer-create filename)))
+        (switch-to-buffer buffer)
+        (write-file filepath nil)
+        ))))
 
 (provide 'init-org)
 ;;; init-org.el ends here
