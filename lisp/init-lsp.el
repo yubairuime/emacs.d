@@ -23,6 +23,11 @@
   (setq lsp-enable-indentation nil)
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-use-plists t)
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-enable-file-watchers nil)  ; Can help with multiple projects
+  (setq lsp-rust-analyzer-server-display-inlay-hints t)
+  (setq lsp-auto-guess-root t)
+  (setq lsp-restart 'auto-restart)
   (yubai/lsp-ui-setup)
 
   (unless (derived-mode-p
