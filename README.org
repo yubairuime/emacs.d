@@ -1,0 +1,21 @@
+* Yubai's Emacs.d
+
+- Blazing Fast (~0.3s)
+- Vim-like keybindings (evil)
+- LSP Support
+- Multiple languages support (Python/C/C++/Racket/Lisp/Web)
+
+* Table of Contents
+- [[#installation][Installation]]
+
+* Prerequisites
+- Emacs 30
+- [[https://github.com/BurntSushi/ripgrep][Ripgrep]]
+- [[https://github.com/blahgeek/emacs-lsp-booster][Emacs LSP Booster]]
+
+* Installation
+
+#+begin_src bash
+git clone https://github.com/yubairuime/emacs.d.git ~/.emacs.d
+emacs
+#+end_src
