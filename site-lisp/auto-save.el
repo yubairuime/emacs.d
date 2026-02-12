@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; auto-save.el --- Auto save files when idle
 
 ;;; Commentary:
