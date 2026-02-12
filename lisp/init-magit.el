@@ -7,6 +7,7 @@
   (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
   (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
   (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
+  (setq magit-show-long-lines-warning nil)
   :general
   (yubai/leader-def
     :states 'normal
