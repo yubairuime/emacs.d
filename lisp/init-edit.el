@@ -17,6 +17,7 @@
   :config
   (setq backward-delete-char-untabify-method 'hungry)
   (setq-default bidi-display-reordering nil)
+  (setq redisplay-skip-fontification-on-input t)
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
   (setq bidi-inhibit-bpa t
