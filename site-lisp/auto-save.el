@@ -41,9 +41,8 @@
                  ;; Yassnippet is not active?
                  (or (not (boundp 'yas--active-snippets))
                      (not yas--active-snippets))
-                 ;; Company is not active?
-                 (or (not (boundp 'company-candidates))
-                     (not company-candidates)))
+                  ;; Completion is not active?
+                  (not (bound-and-true-p completion-in-region-mode)))
             (push (buffer-name) autosave-buffer-list)
             (if auto-save-silent
                 (with-temp-message
