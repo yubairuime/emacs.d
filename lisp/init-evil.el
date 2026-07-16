@@ -37,8 +37,9 @@
 
 (use-package which-key
   :ensure t
-  :hook
-  (after-init . which-key-mode))
+  :defer 1
+  :config
+  (which-key-mode))
 
 (use-package evil-collection
   :ensure t

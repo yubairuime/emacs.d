@@ -23,15 +23,14 @@
   :ensure t)
 
 (use-package eee
-  :vc (:url "https://github.com/eval-exec/eee.el")
-  ;; :load-path "~/.emacs.d/elpa/eee/"
+  :load-path "elpa/eee"
+  :commands (ee-rg ee-yazi)
   :general
   (yubai/leader-def
     :states 'normal
     "." 'ee-yazi
     "gg" 'ee-rg)
   :init
-  (require 'eee)
   (setq ee-terminal-command "ghostty"))
 
 (defvar yubai/ghostel-popup-buffer nil)

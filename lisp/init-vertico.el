@@ -10,7 +10,8 @@
 (use-package recentf
   :commands
   (recentf-open)
-  :init
+  :defer 1
+  :config
   (recentf-mode)
   :custom
   (recentf-max-saved-items 500))

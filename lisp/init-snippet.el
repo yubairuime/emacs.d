@@ -2,8 +2,10 @@
 
 (use-package yasnippet
   :ensure t
+  :defer 1
   :init
   (setq yas-verbosity 0)
+  :config
   (yas-global-mode)
   :bind
   ("M-y" . yas-expand))

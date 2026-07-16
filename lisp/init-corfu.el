@@ -9,6 +9,7 @@
 
 (use-package corfu
   :ensure t
+  :defer 1
   :init
   (setq corfu-auto t
         corfu-auto-delay 0
@@ -16,6 +17,7 @@
         corfu-cycle t)
   (when (bound-and-true-p global-company-mode)
     (global-company-mode -1))
+  :config
   (global-corfu-mode 1)
   :bind
   (:map corfu-map

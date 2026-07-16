@@ -61,5 +61,13 @@
   (if (file-exists-p "~/.emacs.d/custom.el")
       (load "~/.emacs.d/custom.el")))
 
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 16 1024 1024)
+                  gc-cons-percentage 0.1)
+            (run-with-idle-timer 2 nil #'garbage-collect)
+            (message "Emacs ready in %s with %d garbage collections."
+                     (emacs-init-time) gcs-done)))
+
 (provide 'init)
 ;;; init.el ends here
