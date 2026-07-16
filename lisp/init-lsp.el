@@ -25,6 +25,9 @@
   (setq lsp-use-plists t)
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-enable-file-watchers nil)  ; Can help with multiple projects
+  ;; Keep the native LSP CAPF, but prevent lsp-mode from enabling Company.
+  (setq lsp-completion-provider :none)
+  (setq lsp-enable-snippet t)
   (setq lsp-rust-analyzer-server-display-inlay-hints t)
   (setq lsp-auto-guess-root t)
   (setq lsp-restart 'auto-restart)
@@ -45,6 +48,9 @@
     "rn" 'lsp-rename
     "fr" 'lsp-find-references
     "fd" 'lsp-find-definition))
+
+(use-package lsp-ui
+  :ensure t)
 
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
