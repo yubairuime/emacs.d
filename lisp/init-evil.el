@@ -6,6 +6,7 @@
   (after-init . evil-mode)
   :init
   (setq evil-want-keybinding nil)
+  (setq evil-want-fine-undo t)
   (unless (display-graphic-p)
     (add-hook 'evil-insert-state-entry-hook (lambda () (send-string-to-terminal "\033[5 q")))
     (add-hook 'evil-insert-state-exit-hook  (lambda () (send-string-to-terminal "\033[2 q")))))
