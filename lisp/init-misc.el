@@ -2,6 +2,11 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
+
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
+
 ;; Automatically kill processes
 (setq confirm-kill-processes nil)
 
