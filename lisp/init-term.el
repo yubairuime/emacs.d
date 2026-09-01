@@ -2,6 +2,8 @@
 
 (use-package ghostel
   :ensure t
+  :hook
+  (ghostel-mode . yubai/setup-ghostel-evil-cursor)
   :config
   (evil-set-initial-state 'ghostel-mode 'insert)
   :general
@@ -18,6 +20,22 @@
   (yubai/leader-def
     :states 'normal
     "tt" 'open-ghostel-popup))
+
+(defun yubai/ghostel-normal-cursor ()
+  "Use a solid cursor in a Ghostel buffer's Evil normal state."
+  (setq-local ghostel-ignore-cursor-change t)
+  (ghostel--cursor-blink-stop)
+  (setq cursor-type 'box))
+
+(defun yubai/ghostel-terminal-cursor ()
+  "Restore terminal-controlled cursor behavior in a Ghostel buffer."
+  (setq-local ghostel-ignore-cursor-change nil)
+  (ghostel--apply-cursor-style))
+
+(defun yubai/setup-ghostel-evil-cursor ()
+  "Configure state-specific cursor behavior for Ghostel and Evil."
+  (add-hook 'evil-normal-state-entry-hook #'yubai/ghostel-normal-cursor nil t)
+  (add-hook 'evil-normal-state-exit-hook #'yubai/ghostel-terminal-cursor nil t))
 
 (use-package async
   :ensure t)
