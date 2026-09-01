@@ -2,10 +2,9 @@
 
 (defvar llm-log-location "~/projects/org/llm_log/")
 
-(defun yubai/copilot-setup ()
-  (gptel-make-gh-copilot "Copilot")
-  (setq gptel-model 'claude-sonnet-4
-        gptel-backend (gptel-make-gh-copilot "Copilot")))
+(defun yubai/gpt-setup ()
+  (setq gptel-model 'gpt-5.5
+      gptel-backend (gptel-make-openai-oauth "OpenAI-sub")))
 
 (defun yubai/read-directive-from-file (name directive-file)
   (with-temp-buffer
@@ -41,9 +40,9 @@
 
 (use-package gptel
   :ensure t
-  :init
+  :config
+  (yubai/gpt-setup)
   (yubai/read-directives-from-directory "~/.emacs.d/misc/gptel-directives/")
-  (yubai/copilot-setup)
   (setq gptel-default-mode 'org-mode)
   (setq gptel-prompt-prefix-alist '((org-mode . "* Prompt: \n")))
   (setq gptel-response-prefix-alist '((org-mode . "* Response: \n")))
